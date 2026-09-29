@@ -1727,6 +1727,14 @@
               if (o.station_id == 910)
                 if (o.track_number > 0) o.track_number = 3 - o.track_number;
                 else o.track_number = -3 - o.track_number * 2;
+			  if (o.station_id == 913 && (linedata[curline].line_id == 26001 || linedata[curline].line_id == 26002 || linedata[curline].line_id == 26009))
+				if (o.track_number > 0)
+				  o.track_number = 3 - o.track_number;
+				else
+				  o.track_number = -3 - o.track_number;
+			  if (o.station_id == 26 && (linedata[curline].line_id == 26003 || linedata[curline].line_id == 26004 || linedata[curline].line_id == 26008))
+				if (o.track_number < 0)
+				  o.track_number = -3 - o.track_number;
               elem = "sta" + o.station_id + "p" + o.track_number;
             }
             if ("section_id" in o && o.section_id != null) {
