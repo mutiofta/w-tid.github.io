@@ -1385,6 +1385,10 @@
           if (request.readyState != 4 || request.status != 200) return;
           var res = JSON.parse(request.responseText);
 
+		  const date = new Date(res.last_modified * 1000);
+		  document.getElementById("update").textContent =
+    		"更新時刻:" + date.toLocaleString();
+
           linedata[curline].sections.forEach(function (o, i, a) {
             if ("station_id" in o) {
               for (var i = -3; i <= 3; ++i) {
@@ -1958,6 +1962,7 @@
   <body style="background-color: #000313">
     <div style="font-size: 12px"><br /></div>
     <div id="sel" style="padding-bottom: 32px"></div>
+	<div id="update" style="margin-top: -30px;color: #fff;"></div>
     <div id="main"></div>
     <div id="log" style="clear: left"></div>
     <!--
